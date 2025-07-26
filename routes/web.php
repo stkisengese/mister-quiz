@@ -35,3 +35,4 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/quiz', [QuestionController::class, 'index'])->name('quiz');
+Route::post('/quiz/submit', [QuestionController::class, 'results'])->name('quiz.submit');
