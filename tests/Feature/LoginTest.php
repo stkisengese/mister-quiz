@@ -52,8 +52,12 @@ class LoginTest extends TestCase
             'password' => 'wrongpassword'
         ]);
 
-        $response->assertRedirect('/login');
-        $response->assertSessionHas('status', 'These credentials do not match our records.');
+        // Laravel's ValidationException redirects back to the form, not specifically to /login
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors(['email']);
+        $response->assertSessionHasErrorsIn('default', [
+            'email' => trans('auth.failed')
+        ]);
         $this->assertGuest();
     }
 
@@ -65,10 +69,32 @@ class LoginTest extends TestCase
             'password' => 'password123'
         ]);
 
-        $response->assertRedirect('/login');
-        $response->assertSessionHas('status', 'These credentials do not match our records.');
+        // Laravel's ValidationException redirects back to the form
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors(['email']);
+        $response->assertSessionHasErrorsIn('default', [
+            'email' => trans('auth.failed')
+        ]);
         $this->assertGuest();
     }
 
-   
+    /** @test */
+    public function login_requires_email_and_password()
+    {
+        $response = $this->post('/login', []);
+
+        $response->assertSessionHasErrors(['email', 'password']);
+    }
+
+    /** @test */
+    public function login_requires_valid_email_format()
+    {
+        $response = $this->post('/login', [
+            'email' => 'invalid-email',
+            'password' => 'password123'
+        ]);
+
+        $response->assertSessionHasErrors(['email']);
+    }
+
 }
