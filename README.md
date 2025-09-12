@@ -57,6 +57,46 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Usage
+
+To get started with Mister Quiz, follow these steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/stkisengese/mister-quiz.git
+    cd mister-quiz
+    ```
+
+2.  **Install Composer dependencies:**
+    ```bash
+    composer install
+    ```
+
+3.  **Install Node.js dependencies and compile assets:**
+    ```bash
+    npm install
+    npm run dev
+    ```
+
+4.  **Set up your environment file:**
+    Copy the `.env.example` file to `.env` and configure your database connection and other environment variables.
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+5.  **Run database migrations:**
+    ```bash
+    php artisan migrate
+    ```
+
+6.  **Serve the application:**
+    ```bash
+    php artisan serve
+    ```
+
+    You can now access the application in your web browser at `http://127.0.0.1:8000`.
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
