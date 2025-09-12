@@ -17,3 +17,8 @@ yarn-error.log
 
 # JetBrains/PHPStorm
 .idea/
+
+# Compiled assets
+/public/js
+/public/css
+/public/mix-manifest.json
