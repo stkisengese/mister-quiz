@@ -24,15 +24,25 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+// Guest-only routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
+});
 
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+// Auth-only routes
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    // Quiz pages
+    Route::get('/quiz', [QuestionController::class, 'index'])->name('quiz');
+    Route::post('/quiz/submit', [QuestionController::class, 'results'])->name('quiz.submit');
+});
+
+// Publicly accessible
 Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/quiz', [QuestionController::class, 'index'])->name('quiz');
-Route::post('/quiz/submit', [QuestionController::class, 'results'])->name('quiz.submit');
