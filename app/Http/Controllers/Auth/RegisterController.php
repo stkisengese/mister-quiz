@@ -41,9 +41,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        //sign user in
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
+        //sign user in with session regeneration for security
+        Auth::login($user);
+        $request->session()->regenerate();
 
         //redirect
         return redirect()->route('home');
