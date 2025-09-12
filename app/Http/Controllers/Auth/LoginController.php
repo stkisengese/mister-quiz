@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
     public function index()
     {
-         // Redirect already authenticated users
+        // Redirect already authenticated users
         if (Auth::check()) {
             return redirect()->route('home');
         }
-
+        
         return view('auth.login');
     }
 
@@ -39,7 +39,8 @@ class LoginController extends Controller
         }
 
         // Authentication failed
-        return back()->withInput($request->only('email'))
-                    ->with('status', 'These credentials do not match our records.');
+        throw ValidationException::withMessages([
+            'email' => [trans('auth.failed')],
+        ]);
     }
 }
