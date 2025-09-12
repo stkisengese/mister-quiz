@@ -15,12 +15,31 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect()->route('home');
         }
-        
+
         return view('auth.login');
     }
 
     public function store(Request $request)
     {
-        return redirect()->route('home');
+        // Validate the request
+        $this->validate($request, [
+            'email' => 'required|email|max:255',
+            'password' => 'required'
+        ]);
+
+        // Attempt to authenticate the user
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            // Authentication successful
+            $request->session()->regenerate();
+            
+            // Redirect to intended page or home
+            return redirect()->intended(route('home'));
+        }
+
+        // Authentication failed
+        return back()->withInput($request->only('email'))
+                    ->with('status', 'These credentials do not match our records.');
     }
 }
