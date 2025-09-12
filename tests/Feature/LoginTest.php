@@ -97,4 +97,53 @@ class LoginTest extends TestCase
         $response->assertSessionHasErrors(['email']);
     }
 
+    /** @test */
+    public function authenticated_user_is_redirected_from_login_page()
+    {
+        $user = User::create([
+            'username' => 'testuser',
+            'email' => 'test@example.com',
+            'password' => Hash::make('password123')
+        ]);
+
+        $response = $this->actingAs($user)->get('/login');
+
+        $response->assertRedirect('/home');
+    }
+
+    /** @test */
+    public function user_can_logout()
+    {
+        $user = User::create([
+            'username' => 'testuser',
+            'email' => 'test@example.com',
+            'password' => Hash::make('password123')
+        ]);
+
+        $response = $this->actingAs($user)->post('/logout');
+
+        $response->assertRedirect('/');
+        $this->assertGuest();
+    }
+
+    /** @test */
+    public function failed_login_shows_correct_error_message()
+    {
+        User::create([
+            'username' => 'testuser',
+            'email' => 'test@example.com',
+            'password' => Hash::make('password123')
+        ]);
+
+        $response = $this->post('/login', [
+            'email' => 'test@example.com',
+            'password' => 'wrongpassword'
+        ]);
+
+        // Check that the error message matches what's in auth.failed
+        $this->assertEquals('The provided password is incorrect.', trans('auth.password'));
+        $response->assertSessionHasErrorsIn('default', [
+            'email' => 'These credentials do not match our records.'
+        ]);
+    }
 }
