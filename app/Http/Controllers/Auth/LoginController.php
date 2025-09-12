@@ -11,6 +11,11 @@ class LoginController extends Controller
 {
     public function index()
     {
+         // Redirect already authenticated users
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
+        
         return view('auth.login');
     }
 
