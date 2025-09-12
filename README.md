@@ -1,102 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Mister Quiz
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="/public/images/mister_quiz.png" width="400" alt="Mister Quiz Logo">
 </p>
 
-## About Laravel
+Mister Quiz is a web-based quiz game inspired by "Who Wants to Be a Millionaire?". It allows users to register, test their knowledge across various categories, and compete for a spot on the leaderboard. This project is built with PHP and the Laravel framework.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **User Authentication:** Users can register for an account and log in to play.
+- **Quiz Gameplay:** Logged-in users can start a quiz with questions from multiple categories (Art, History, Geography, Science, Sports). The application saves progress, allowing users to refresh the page or come back later to finish a quiz.
+- **Scoring and XP:** Users earn XP for correct answers, which contributes to their rank.
+- **User Profiles:** Each user has a profile page displaying their username, email, total XP, rank, and detailed stats on their performance in each category.
+- **Leaderboard:** A public leaderboard showcases the top 10 players based on their total XP.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tech Stack
 
-## Learning Laravel
+- **Backend:** PHP 8+ with Laravel 10
+- **Frontend:** Blade templates, CSS, and JavaScript
+- **Database:** MySQL/sqlite3
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Getting Started
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Follow these steps to get the project up and running on your local machine.
 
-## Laravel Sponsors
+### 1. Clone the Repository
+```bash
+git clone https://github.com/stkisengese/mister-quiz.git
+cd mister-quiz
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 2. Install Dependencies
+Install both Composer (PHP) and Node.js dependencies.
+```bash
+composer install
+npm install
+```
 
-### Premium Partners
+### 3. Set Up Environment
+Create your environment file and generate an application key.
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+Next, open the `.env` file and configure your database connection details (DB_DATABASE, DB_USERNAME, DB_PASSWORD). The recommended database name is `mister_quiz`.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+### 4. Set Up the Database
+Make sure you have a MySQL server running. Create a database for the project.
+```sql
+CREATE DATABASE mister_quiz;
+```
 
-## Contributing
+### 5. Run Migrations and Seed Data
+Run the database migrations to create the necessary tables.
+```bash
+php artisan migrate
+```
+To populate the database with questions and answers, you can use the provided SQL file. You can import `questions_and_answers.sql` into your `mister_quiz` database using a tool like phpMyAdmin or the command line.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> **Note:** A dump file with questions and answers is available [here](https://assets.01-edu.org/mister-quiz/questions_and_answers.sql).
 
-## Code of Conduct
+### 6. Compile Frontend Assets
+```bash
+npm run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## Usage
-
-To get started with Mister Quiz, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/stkisengese/mister-quiz.git
-    cd mister-quiz
-    ```
-
-2.  **Install Composer dependencies:**
-    ```bash
-    composer install
-    ```
-
-3.  **Install Node.js dependencies and compile assets:**
-    ```bash
-    npm install
-    npm run dev
-    ```
-
-4.  **Set up your environment file:**
-    Copy the `.env.example` file to `.env` and configure your database connection and other environment variables.
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
-
-5.  **Run database migrations:**
-    ```bash
-    php artisan migrate
-    ```
-
-6.  **Serve the application:**
-    ```bash
-    php artisan serve
-    ```
-
-    You can now access the application in your web browser at `http://127.0.0.1:8000`.
+### 7. Serve the Application
+```bash
+php artisan serve
+```
+The application will be available at `http://127.0.0.1:8000`.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
