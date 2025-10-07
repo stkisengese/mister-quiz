@@ -56,9 +56,12 @@ Run the database migrations to create the necessary tables.
 ```bash
 php artisan migrate
 ```
-To populate the database with questions and answers, you can use the provided SQL file. You can import `questions_and_answers.sql` into your `mister_quiz` database using a tool like phpMyAdmin or the command line.
+To populate the database with questions and answers, run the database seeder:
+```bash
+php artisan db:seed
+```
 
-> **Note:** A dump file with questions and answers is available [here](https://assets.01-edu.org/mister-quiz/questions_and_answers.sql).
+> **Note:** The `questions_and_answers.sql` file was used to generate the seeders for the questions and answers. You do not need to import it manually.
 
 ### 6. Compile Frontend Assets
 ```bash
