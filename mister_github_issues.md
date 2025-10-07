@@ -125,11 +125,11 @@ The leaderboard view only contains empty table tags.
 - Style the table appropriately
 
 ### Acceptance Criteria
-- [ ] Leaderboard shows top 10 users by XP
-- [ ] Table includes: Username, XP, Total Correct Answers
-- [ ] Total correct answers calculated from all category scores
-- [ ] Proper styling and responsive design
-- [ ] Handle case when less than 10 users exist
+- [x] Leaderboard shows top 10 users by XP
+- [x] Table includes: Username, XP, Total Correct Answers
+- [x] Total correct answers calculated from all category scores
+- [x] Proper styling and responsive design
+- [x] Handle case when less than 10 users exist
 
 ### Implementation Details
 
