@@ -23,11 +23,11 @@ public function store(Request $request)
 - Display appropriate error messages for invalid credentials
 
 ### Acceptance Criteria
-- [ ] User can login with valid email/password combination
-- [ ] Invalid credentials show error message "These credentials do not match our records"
-- [ ] Form validation works for required fields
-- [ ] User is redirected to homepage after successful login
-- [ ] User session is properly established
+- [x] User can login with valid email/password combination
+- [x] Invalid credentials show error message "These credentials do not match our records"
+- [x] Form validation works for required fields
+- [x] User is redirected to homepage after successful login
+- [x] User session is properly established
 
 ### Implementation Details
 ```php
@@ -65,14 +65,14 @@ Profile controller has empty arrays and missing rank calculation logic.
 - Calculate and show overall statistics
 
 ### Acceptance Criteria
-- [ ] User rank displays correctly based on XP:
+- [x] User rank displays correctly based on XP:
   - < 1500 XP => "Quiz Apprentice"
   - 1500-5000 XP => "Average Quizer"  
   - 5000-10000 XP => "Epic Quizer"
   - >= 10000 XP => "Quiz Master"
-- [ ] Category statistics show correct format (x/y)
-- [ ] Percentages are calculated and displayed
-- [ ] Only authenticated users can access their profile
+- [x] Category statistics show correct format (x/y)
+- [x] Percentages are calculated and displayed
+- [x] Only authenticated users can access their profile
 
 ### Implementation Details
 ```php
