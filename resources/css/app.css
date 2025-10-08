@@ -1,4 +1,4 @@
-body {
+/* body {
   background-image: linear-gradient(to bottom, #4b4b4b, #000000);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -149,10 +149,11 @@ body {
 
 .content {
   margin-top: 5%;
-}
+ } */
+
 
 /*----------------------- Home Page -----------------------*/
-img {
+/* img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -161,13 +162,13 @@ img {
 
 .main-img {
   margin-top: 190px;
-}
+} */
 
 /*---------------------------------------------------------*/
 
 /*----------------------- Auth Form -----------------------*/
 
-.auth-input {
+/* .auth-input {
   font-size: larger;
   width: 50%;
   padding: 12px 10px;
@@ -185,13 +186,13 @@ auth-input:focus {
   transition: 1s;
   border-left: 2px solid #2a3572;
   border-bottom: 2px solid #2a3572;
-}
+} */
 
 /*---------------------------------------------------------*/
 
 /*----------------------- Quiz Form -----------------------*/
 
-.checkboxes-wrapper {
+/* .checkboxes-wrapper {
   width: 70%;
   margin: 20px auto;
   margin-top: 30px;
@@ -223,13 +224,13 @@ auth-input:focus {
 .checkbox label input:checked + span {
   background-color: rgb(19, 4, 73);
   color: white;
-}
+} */
 
 /*---------------------------------------------------------*/
 
 /*------------------------ Results ------------------------*/
 
-.results-wrapper {
+/* .results-wrapper {
   display: inline-flex;
   padding: 20px 30px;
   border-radius: 15px;
@@ -247,13 +248,13 @@ auth-input:focus {
   border-radius: 20px;
   box-shadow: 0px 0px 20px #00000050;
   color: rgb(162, 212, 255);
-}
+} */
 
 /*---------------------------------------------------------*/
 
 /*------------------------ Profile ------------------------*/
 
-.profile-header {
+/* .profile-header {
   margin: 50px 0 60px 40px;
   display: flex;
 }
@@ -279,4 +280,4 @@ auth-input:focus {
   margin: 0;
 }
 
-/*---------------------------------------------------------*/
+--------------------------------------------------------- */
